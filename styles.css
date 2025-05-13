@@ -6,12 +6,18 @@
     font-family: 'Lexend', sans-serif;
 }
 
+body {
+    background: #1c1c1c;
+    color: #bdbdbd;
+    line-height: 1.6;
+}
 /* Navbar */
 nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    height: 110px;
+    height: auto;
     padding: 30px 60px;  /* Uniform padding */
     background: #1c1c1c;
     color: white;
@@ -41,24 +47,72 @@ nav {
     width: auto;
 }
 
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.logo_rt img {
+    height: 54px;
+    width: auto;
+    animation: spin 2s linear infinite;
+}
+
 /* Centered Navigation Content */
 .nav-center {
     display: flex;
+    flex:1 1 100%;
+    margin: 100px 0;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -10%); /* Moved it lower */
-    color: #bdbdbd;
+    transform: translate(-50%, -10%);
 }
 
+.text-switch {
+  position: relative;
+  display: inline-block;
+}
 
 .nav-center h1 {
     font-size: 30px;
     font-weight: 500;
     color: #bdbdbd;
 }
+#english,
+#kannada {
+    transition: opacity 0.1s ease;
+}
+
+#english {
+  opacity: 1;
+  z-index: 2;
+}
+#kannada {
+    position: absolute;
+    font-weight: 700;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+
+}
+
+/* On hover, hide English and show Kannada */
+.text-switch:hover #english {
+  opacity: 0;
+}
+.text-switch:hover #kannada {
+  opacity: 1;
+}
+
 
 .nav-center p {
     font-size: 24px;
@@ -66,14 +120,6 @@ nav {
     opacity: 1.0;
     color: #bdbdbd;
 }
-
-/* .line {
-    flex-grow: 1;
-    width: 150;
-    height: 2px;
-    background-color: #bdbdbd;
-    margin: 0 20px; /* Adjust spacing */
-/* } */ */
 
 
 
@@ -165,3 +211,40 @@ footer {
     color: white;
     font-size: 16px;
 }
+
+@media (max-width: 768px) {
+  nav {
+    padding: 10px 20px;
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+
+  .logo {
+    font-size: 20px;
+    flex: 1;
+  }
+
+  .logo_rt img {
+    height: 36px;
+  }
+
+  .logo_rt {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+
+  .nav-center {
+    flex: 2;
+  }
+
+  .nav-center h1 {
+    font-size: 20px;
+  }
+
+  .nav-center p {
+    font-size: 16px;
+  }
+}
+
+
+
